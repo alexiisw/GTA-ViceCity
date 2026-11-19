@@ -15,6 +15,9 @@ public abstract class Contract {
         this.vehicle = vehicle;
     }
 
+    protected Contract() {
+    }
+
     public String getDate() {
         return date;
     }
