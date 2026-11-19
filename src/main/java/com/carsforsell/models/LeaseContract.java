@@ -1,15 +1,26 @@
 package com.carsforsell.models;
 
-public abstract class LeaseContract extends Contract  {
-private double expectEndVaule;
-private double leaseFee;
+public class LeaseContract extends Contract  {
+    //The instructions say Create ExpectEndVaule & LeaseFee
 
-    public double getExpectEndVaule() {
-        return expectEndVaule;
+    private double expectEndingVaule;
+    private double leaseFee;
+
+    //constructor
+
+    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicle, double expectEndVaule, double leaseFee) {
+        super(date, customerName, customerEmail, vehicle);
+        this.expectEndingVaule = expectEndVaule;
+        this.leaseFee = leaseFee;
     }
 
-    public void setExpectEndVaule(double expectEndVaule) {
-        this.expectEndVaule = expectEndVaule;
+    // Regular getters & Setters
+    public double getExpectEndingVaule() {
+        return expectEndingVaule;
+    }
+
+    public void setExpectEndVaule(double expectEndingVaule) {
+        this.expectEndingVaule = expectEndingVaule;
     }
 
     public double getLeaseFee() {
@@ -18,5 +29,14 @@ private double leaseFee;
 
     public void setLeaseFee(double leaseFee) {
         this.leaseFee = leaseFee;
+    }
+
+    @Override
+    public double getTotalPrice() {
+        return expectEndingVaule * 0.50;
+    }
+    @Override
+    public double getMonthlyPayment() {
+        return leaseFee * 0.07;
     }
 }
