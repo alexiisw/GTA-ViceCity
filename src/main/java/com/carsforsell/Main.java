@@ -1,6 +1,6 @@
 package com.carsforsell;
 
-import com.carsforsell.userInterface.UserInterface;
+import com.carsforsell.UI.UserInterface;
 
 import java.io.IOException;
 import java.nio.file.Path;
