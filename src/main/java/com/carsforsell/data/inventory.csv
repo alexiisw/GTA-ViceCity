@@ -1,11 +1,30 @@
 VIN|YEAR|MAKE|MODEL|VEHICLE_TYPE|COLOR|ODOMETER|PRICE
-LS1001|2023|Karin|Sultan|Sedan|Black|12000|8000.00
-LS1002|2025|Pegassi|Zentorno|Super|Red|2500|80000.00
-LS1003|2022|Bravado|Banshee|Sports|Blue|18500|35000.00
-LS1004|2026|Vapid|Dominator|Muscle|White|350|24500.00
-LS1005|2018|Declasse|Sabre Turbo|Muscle|Yellow|81000|6500.00
-LS1006|2024|Obey|9F|Sports|Silver|8200|42000.00
-LS1007|2021|Benefactor|Schafter|Sedan|Gray|41000|9999.00
-LS1008|2026|Grotti|Turismo R|Super|Orange|120|110000.00
-LS1009|2023|Albany|Emperor|Sedan|Green|22500|10000.00
-LS1010|2020|Canis|Mesa|SUV|Beige|60000|12500.00
+LS1001|2023|Karin|Sultan|Sedan|Black|12000|8000.0
+LS1002|2025|Pegassi|Zentorno|Super|Red|2500|80000.0
+LS1003|2022|Bravado|Banshee|Sports|Blue|18500|35000.0
+LS1004|2026|Vapid|Dominator|Muscle|White|350|24500.0
+LS1005|2018|Declasse|Sabre Turbo|Muscle|Yellow|81000|6500.0
+LS1006|2024|Obey|9F|Sports|Silver|8200|42000.0
+LS1007|2026|Grotti|Turismo R|Super|Orange|120|110000.0
+LS1008|2020|Canis|Mesa|SUV|Beige|60000|12500.0
+LS1010|2021|Benefactor|Schafter|Sedan|Grey|41000|9999.0
+LS1011|2022|Toyota|Camry|Sedan|White|18000|24500.0
+LS1012|2024|Pegassi|Reaper|Super|Black|3200|95000.0
+LS1013|2023|Honda|Civic|Sedan|Blue|9000|26000.0
+LS1014|2021|Ford|Mustang|Coupe|Red|22000|32000.0
+LS1015|2022|BMW|330i|Sedan|Black|15000|38500.0
+LS1016|2023|Mercedes-Benz|C300|Sedan|Silver|11000|42000.0
+LS1017|2021|Audi|A5|Coupe|Gray|27000|35000.0
+LS1018|2022|Chevrolet|Camaro|Coupe|Yellow|19000|33000.0
+LS1019|2023|Dodge|Charger|Sedan|Black|14000|39000.0
+LS1020|2022|Tesla|Model 3|Sedan|White|16000|31000.0
+LS1021|2021|Porsche|718 Cayman|Coupe|Red|21000|62000.0
+LS1022|2023|Lexus|IS 350|Sedan|Blue|8000|44000.0
+LS1023|2022|Nissan|370Z|Coupe|Orange|17000|36000.0
+LS1024|2023|Mazda|MX-5 Miata|Convertible|White|7000|29500.0
+LS1025|2021|Jeep|Wrangler|SUV|Green|25000|34000.0
+LS1026|2022|Range Rover|Evoque|SUV|Black|18000|46000.0
+LS1027|2023|Hyundai|Elantra N|Sedan|Blue|6000|31000.0
+LS1028|2022|Subaru|WRX|Sedan|White|13000|30000.0
+LS1029|2023|Chevrolet|Corvette|Coupe|Red|5000|72000.0
+LS1030|2022|Lamborghini|Huracan|Coupe|Yellow|4000|210000.0

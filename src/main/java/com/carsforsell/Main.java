@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 public class Main { //will be similar to the ledger
     public static void main(String[] args) {
-        Path dataDir = args.length > 0 ? Path.of(args[0]) : Path.of("data");
+        Path dataDir = args.length > 0 ? Path.of(args[0]) : Path.of("src/main/java/com/carsforsell/data");
         try {
             new UserInterface(dataDir).display();
         } catch (IOException ex) {
