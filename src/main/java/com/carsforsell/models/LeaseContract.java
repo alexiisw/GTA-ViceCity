@@ -6,7 +6,7 @@ public class LeaseContract extends Contract  {
     private double expectEndingValue;
     private double leaseFee;
 
-    //constructor
+    //constructor from a new branch once again
 
     public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicle) {
         super(date, customerName, customerEmail, vehicle);
@@ -33,7 +33,7 @@ public class LeaseContract extends Contract  {
 
     @Override
     public double getTotalPrice() {
-        return getExpectEndingVaule() + leaseFee;
+        return getVehicle().getPrice() - getExpectEndingVaule() + leaseFee;
     }
     @Override
     public double getMonthlyPayment() {

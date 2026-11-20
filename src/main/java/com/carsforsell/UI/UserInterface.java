@@ -2,16 +2,17 @@ package com.carsforsell.UI;
 
 import com.carsforsell.data.ContractFileManager;
 import com.carsforsell.data.InventoryFileManager;
-import com.carsforsell.models.Vehicle;
+import com.carsforsell.models.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private final InventoryFileManager inventoryFileManager;
     private final ContractFileManager contractFileManager;
     private List<Vehicle> inventory;
@@ -51,7 +52,7 @@ public class UserInterface {
         }
     }
 
-    private String ask(String prompt) {
+    private static String ask(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine().trim();
     }
@@ -106,37 +107,92 @@ public class UserInterface {
         inventory = updated;
         System.out.println("Vehicle removed.");
     }
+    private void sellOrLeaseVehicle() throws IOException {
 
-    private void sellOrLeaseVehicle() throws IOException { // ALEXIS
-        // MISSION 5: Implement the complete user interaction here.
-        // 1. Ask for VIN and locate vehicle via findByVin().
-        // 2. Ask for customer details and SALE/LEASE choice.
-        // 3. Validate lease age using java.time.Year.now().getValue().
-        // 4. For a sale, ask about financing.
-        // 5. Create SalesContract OR LeaseContract (store in Contract variable).
-        // 6. Print getTotalPrice() and getMonthlyPayment().
-        // 7. Save with contractFileManager.saveContract(contract).
-        // 8. Only after successful contract save, update vehicle inventory.
-        // Think about what should happen if updating inventory fails.
-        System.out.println("MISSION 5 is not implemented yet. See README.md.");
+        // 1. Ask for VIN
+        String vin = UserInterface.ask("Enter VIN: ");
+
+        Vehicle vehicle = findByVin(vin);
+
+        if (vehicle == null) {
+            System.out.println("Vehicle not found.");
+            return;
+        }
+
+        // 2. Customer information
+        String customerName = UserInterface.ask("Customer Name: ");
+        String customerEmail = UserInterface.ask("Customer Email: ");
+
+        String contractType =
+                UserInterface.ask("Sale or Lease? (S/L): ").trim().toUpperCase();
+
+        Contract contract;
+
+        // 3. Lease validation
+        if (contractType.equals("L")) {
+
+            int currentYear = java.time.Year.now().getValue();
+
+            if (currentYear - vehicle.getYear() > 3) {
+                System.out.println("Vehicle is too old to lease.");
+                return;
+            }
+
+            contract = new LeaseContract(
+                    currentDate(),
+                    customerName,
+                    customerEmail,
+                    vehicle
+            );
+
+        } else if (contractType.equals("S")) {
+
+            // 4. Financing
+            boolean finance =
+                    UserInterface.askYesNo("Would you like financing? (Y/N): ");
+
+            contract = new SalesContract(
+                    currentDate(),
+                    customerName,
+                    customerEmail,
+                    vehicle,
+                    finance
+            );
+
+        } else {
+            System.out.println("Invalid contract type.");
+            return;
+        }
+
+        // 6. Display pricing
+        System.out.printf("Total Price: $%,.2f%n",
+                contract.getTotalPrice());
+
+        System.out.printf("Monthly Payment: $%,.2f%n",
+                contract.getMonthlyPayment());
+
+        // 7. Save Contract
+        contractFileManager.saveContract(contract);
+
+        // 8. Remove vehicle from inventory
+        List<Vehicle> updated = new ArrayList<>(inventory);
+        updated.remove(vehicle);
+
+        inventoryFileManager.saveVehicles(updated);
+
+    //
+        System.out.println("Contract completed successfully.");
     }
+    private static boolean askYesNo(String prompt) {
+        String answer = ask(prompt);
+
+        return answer.equalsIgnoreCase("Y")
+                || answer.equalsIgnoreCase("YES");
+    }
+    private String currentDate(){
+        return LocalDate.now().toString();
+    }
+
+
 }
 
-//methods needed
-// dealership : Dealership
-// UserInterface()
-// display()
-// processGetByPriceRequest()
-// processGetByMakeModelRequest()
-// processGetByYearRequest()
-// processGetByColorRequest()
-// processGetByMileageRequest()
-// processGetByVehicleTypeRequest()
-// processGetAllVehiclesRequest()
-// processAddVehicleRequest()
-// processRemoveVehicleRequest()
-
-//7 - List ALL vehicles
-//8 - Add a vehicle
-//9 - Remove a vehicle
-//99 - Quit

@@ -19,13 +19,42 @@ public class SalesContract extends Contract {
 
     @Override
     public double getTotalPrice() {
-        // TODO: vehicle price + 5% tax + $100 recording fee + processing fee.
-        throw new UnsupportedOperationException("MISSION 2: Implement sales total");
-    }
+        double price = getVehicle().getPrice();
+        double salesTax = price * 0.05;
+        double recordingFee = 100;
+        double processingFee;
 
+        if (price < 10000) {  //price pf the vehicle is less than $10,000
+            processingFee = 295;
+        } else {
+            processingFee = 495;
+        }
+        return price + salesTax + recordingFee + processingFee;
+    }
     @Override
     public double getMonthlyPayment() {
-        // TODO: return 0 when not financed; otherwise amortize the full total.
-        throw new UnsupportedOperationException("MISSION 2: Implement sales payment");
+        if(!isFinance()){ //if the customer pays cash, there is no monthly payment
+            return(0);
+        }
+        double totalPrice = getTotalPrice(); //the final amount after taxes, fees, and down payment calculations
+        double annualInterestRate;
+        int loanLength;
+
+        if (totalPrice >= 10000) { //for vehicles $10,000 or more
+            annualInterestRate = 0.0425; // 4.25%
+            loanLength = 48;
+        } else { //for vehicles $10,000 or less
+            annualInterestRate = 0.0525; // 5.25%
+            loanLength = 24;
+        }
+
+        double monthlyInterestRate = annualInterestRate / 12; // coverts rate to monthly
+
+        double monthlyPayment =
+                totalPrice *
+                        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanLength))
+                        / (Math.pow(1 + monthlyInterestRate, loanLength) - 1); // // calculate financing payment; the standard loan amortization formula
+
+        return monthlyPayment;
     }
 }
