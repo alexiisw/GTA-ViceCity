@@ -26,7 +26,7 @@ public class UserInterface {
     public void display() {
         boolean running = true;
         while (running) {
-            System.out.println("\n========== LOS SANTOS MOTORS ==========");
+            System.out.println("\n========== VICE CITY MOTORS ==========");
             System.out.println("1. Browse showroom");
             System.out.println("2. Search vehicles by VIN");
             System.out.println("3. Add vehicle");
