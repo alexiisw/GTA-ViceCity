@@ -1,6 +1,5 @@
 package com.carsforsell.models;
 
-import java.math.BigDecimal;
 
 public class Vehicle {
     private final String vin;

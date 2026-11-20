@@ -33,7 +33,7 @@ public class LeaseContract extends Contract  {
 
     @Override
     public double getTotalPrice() {
-        return getExpectEndingVaule() + leaseFee;
+        return getVehicle().getPrice() - getExpectEndingVaule() + leaseFee;
     }
     @Override
     public double getMonthlyPayment() {

@@ -6,6 +6,7 @@ import com.carsforsell.models.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -106,13 +107,12 @@ public class UserInterface {
         inventory = updated;
         System.out.println("Vehicle removed.");
     }
-
     private void sellOrLeaseVehicle() throws IOException {
 
         // 1. Ask for VIN
         String vin = UserInterface.ask("Enter VIN: ");
 
-        Vehicle vehicle = dealership.findByVin(vin);
+        Vehicle vehicle = findByVin(vin);
 
         if (vehicle == null) {
             System.out.println("Vehicle not found.");
@@ -175,12 +175,24 @@ public class UserInterface {
         contractFileManager.saveContract(contract);
 
         // 8. Remove vehicle from inventory
-        dealership.removeVehicle(vehicle);
+        List<Vehicle> updated = new ArrayList<>(inventory);
+        updated.remove(vehicle);
 
-        dealershipFileManager.saveDealership(dealership);
+        inventoryFileManager.saveVehicles(updated);
 
+    //
         System.out.println("Contract completed successfully.");
     }
+    private static boolean askYesNo(String prompt) {
+        String answer = ask(prompt);
+
+        return answer.equalsIgnoreCase("Y")
+                || answer.equalsIgnoreCase("YES");
+    }
+    private String currentDate(){
+        return LocalDate.now().toString();
+    }
+
 
 }
 
