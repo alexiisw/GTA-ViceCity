@@ -6,7 +6,7 @@ public class LeaseContract extends Contract  {
     private double expectEndingValue;
     private double leaseFee;
 
-    //constructor
+    //constructor from a new branch
 
     public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicle) {
         super(date, customerName, customerEmail, vehicle);
